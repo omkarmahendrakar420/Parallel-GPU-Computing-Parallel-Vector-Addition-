@@ -73,35 +73,35 @@ The following diagram illustrates the complete execution pipeline and the Fork-J
 
 ```mermaid
 flowchart TD
-    A([Start Program Execution]) --> B[Parse Command Line Arguments: Vector Size N, Operation]
-    B --> C[Dynamic Memory Allocation: malloc A, B, C of size N * sizeof int]
-    C --> D[Initialize Input Vectors: A[i] = i, B[i] = 2*i]
-    D --> E[Start Precision Timer: start = omp_get_wtime]
-    E --> F{Execution Mode}
+    A(["Start Program Execution"]) --> B["Parse Command Line Arguments: Vector Size N, Operation"]
+    B --> C["Dynamic Memory Allocation: malloc A, B, C of size N * sizeof(int)"]
+    C --> D["Initialize Input Vectors: A[i] = i, B[i] = 2*i"]
+    D --> E["Start Precision Timer: start = omp_get_wtime()"]
+    E --> F{"Execution Mode"}
     
-    F -->|Sequential Mode| G[Single Master Thread executes standard for loop]
-    G --> H[Process Elements 0 to N-1 sequentially]
+    F -->|Sequential Mode| G["Single Master Thread executes standard for loop"]
+    G --> H["Process Elements 0 to N-1 sequentially"]
     
-    F -->|OpenMP Parallel Mode| I[Master Thread encounters #pragma omp parallel for]
-    I --> J[Fork Team of 12 Worker Threads]
-    J --> K[Decompose Vector into 12 Contiguous Chunks]
-    K --> L1[Thread 0: Computes Chunk 0]
-    K --> L2[Thread 1: Computes Chunk 1]
-    K --> L3[Thread 2..10: Compute Chunks 2..10]
-    K --> L4[Thread 11: Computes Chunk 11]
-    L1 --> M[Join: Synchronize all 12 threads at implicit barrier]
+    F -->|OpenMP Parallel Mode| I["Master Thread encounters #pragma omp parallel for"]
+    I --> J["Fork Team of 12 Worker Threads"]
+    J --> K["Decompose Vector into 12 Contiguous Chunks"]
+    K --> L1["Thread 0: Computes Chunk 0"]
+    K --> L2["Thread 1: Computes Chunk 1"]
+    K --> L3["Thread 2..10: Compute Chunks 2..10"]
+    K --> L4["Thread 11: Computes Chunk 11"]
+    L1 --> M["Join: Synchronize all 12 threads at implicit barrier"]
     L2 --> M
     L3 --> M
     L4 --> M
     
-    H --> N[Stop Precision Timer: end = omp_get_wtime]
+    H --> N["Stop Precision Timer: end = omp_get_wtime()"]
     M --> N
     
-    N --> O[Compute Elapsed Time = end - start]
-    O --> P[Verify First 10 Computed Elements for Correctness]
-    P --> Q[Log Timing, Speedup, and System Metrics]
-    Q --> R[Free Allocated Dynamic Memory: free A, B, C]
-    R --> S([End Program Execution])
+    N --> O["Compute Elapsed Time = end - start"]
+    O --> P["Verify First 10 Computed Elements for Correctness"]
+    P --> Q["Log Timing, Speedup, and System Metrics"]
+    Q --> R["Free Allocated Dynamic Memory: free(A), free(B), free(C)"]
+    R --> S(["End Program Execution"])
 ```
 
 ---

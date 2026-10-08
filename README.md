@@ -10,7 +10,7 @@
 ## Table of Contents
 1. [Project Overview & Objectives](#-project-overview--objectives)
 2. [Mathematical Formulation](#-mathematical-formulation)
-3. [System Architecture (Vertical Flow)](#-system-architecture-vertical-flow)
+3. [System Architecture](#-system-architecture-vertical-flow)
 4. [Repository Folder Structure](#-repository-folder-structure)
 5. [Source Code Implementation](#-source-code-implementation)
 6. [Step-by-Step Execution Guide & Screenshots](#-step-by-step-execution-guide--screenshots)

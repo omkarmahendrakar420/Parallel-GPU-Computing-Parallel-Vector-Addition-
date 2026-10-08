@@ -1,15 +1,13 @@
-# 🚀 Parallel Vector Addition & Multiplication using OpenMP
-### Parallel and GPU Computing (PGC) Mini-Project — Team 1
+# Parallel Vector Addition & Multiplication using OpenMP
+### Parallel and GPU Computing (PGC)
 
 [![OpenMP](https://img.shields.io/badge/Parallel%20Model-OpenMP-orange.svg)](https://www.openmp.org/)
 [![Language](https://img.shields.io/badge/Language-C%20%2F%20C99-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
 [![Compiler](https://img.shields.io/badge/Compiler-GCC%2014.2%20(MSYS2%20UCRT64)-green.svg)](https://www.msys2.org/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2011%20x64-lightgrey.svg)](https://www.microsoft.com/windows)
-[![Repository](https://img.shields.io/badge/GitHub-Repository-black.svg)](https://github.com/omkarmahendrakar420/Parallel-GPU-Computing-Parallel-Vector-Addition-)
-
 ---
 
-## 📌 Table of Contents
+## Table of Contents
 1. [Project Overview & Objectives](#-project-overview--objectives)
 2. [Mathematical Formulation](#-mathematical-formulation)
 3. [System Architecture (Vertical Flow)](#-system-architecture-vertical-flow)
@@ -19,17 +17,14 @@
 7. [Performance Benchmark & Results Table](#-performance-benchmark--results-table)
 8. [Performance Graphs & Visualizations](#-performance-graphs--visualizations)
 9. [In-Depth Data Analysis](#-in-depth-data-analysis)
-10. [Evaluation Rubric & Checkpoints (10 Marks)](#-evaluation-rubric--checkpoints-10-marks)
-11. [Technical Viva Questions & Answers](#-technical-viva-questions--answers)
-12. [Conclusion](#-conclusion)
 
 ---
 
-## 📖 Project Overview & Objectives
+## Project Overview & Objectives
 
 In modern high-performance computing, processing large datasets and performing intensive numerical linear algebra requires leveraging multi-core processor architectures. **Parallel Vector Addition & Multiplication** is a foundational parallel computing paradigm that demonstrates **Data-Level Parallelism (SIMD/SPMD)**.
 
-### 🎯 Objectives
+### Objectives
 - **Sequential Baseline:** Implement single-threaded sequential vector addition and multiplication in C.
 - **Parallel Acceleration:** Implement multi-threaded parallel vector operations using **OpenMP** (`#pragma omp parallel for`).
 - **Scalability Testing:** Benchmark across data sizes: **1 Million ($10^6$)**, **10 Million ($10^7$)**, and **50 Million ($5 \times 10^7$)** elements.
@@ -38,7 +33,7 @@ In modern high-performance computing, processing large datasets and performing i
 
 ---
 
-## 🧮 Mathematical Formulation
+## Mathematical Formulation
 
 Given two input vectors $A$ and $B$ of size $N$, initialized as:
 $$A[i] = i, \quad B[i] = 2i \quad (\text{for } 0 \le i < N)$$
@@ -67,7 +62,7 @@ $$C[i] = A[i] \times B[i] = i \times 2i = 2i^2$$
 
 ---
 
-## 🏗️ System Architecture (Vertical Flow)
+## System Architecture (Vertical Flow)
 
 The following diagram illustrates the complete execution pipeline and the Fork-Join parallel model used by OpenMP:
 
@@ -106,49 +101,49 @@ flowchart TD
 
 ---
 
-## 📂 Repository Folder Structure
+## Repository Folder Structure
 
 ```text
-📁 Parallel-Vector-Addition/
+ Parallel-Vector-Addition/
 │
-├── 📄 README.md                     # Comprehensive Project Report, Guide & Viva
-├── 📄 results.txt                   # Consolidated timing benchmarks & speedup metrics
+├──  README.md                     # Comprehensive Project Report, Guide & Viva
+├──  results.txt                   # Consolidated timing benchmarks & speedup metrics
 │
-├── 📁 sequential/                   # Sequential (Single-Threaded) Implementation
-│   ├── 📄 vector_add_sequential.c   # C source code for sequential execution
-│   ├── ⚙️ vector_add_sequential.exe # Compiled sequential binary executable
-│   ├── 📄 sequential_result.txt     # Raw terminal output (1M & 10M tests)
-│   └── 📄 sequential_50M_result.txt # Raw terminal output (50M test)
+├──  sequential/                   # Sequential (Single-Threaded) Implementation
+│   ├──  vector_add_sequential.c   # C source code for sequential execution
+│   ├──  vector_add_sequential.exe # Compiled sequential binary executable
+│   ├──  sequential_result.txt     # Raw terminal output (1M & 10M tests)
+│   └──  sequential_50M_result.txt # Raw terminal output (50M test)
 │
-├── 📁 parallel/                     # Parallel (OpenMP Multi-Threaded) Implementation
-│   ├── 📄 vector_add_openmp.c       # C source code with OpenMP pragmas
-│   ├── ⚙️ vector_add_openmp.exe     # Compiled OpenMP binary executable
-│   ├── 📄 parallel_result.txt       # Raw terminal output (1M & 10M tests)
-│   └── 📄 parallel_50M_result.txt   # Raw terminal output (50M test)
+├──  parallel/                     # Parallel (OpenMP Multi-Threaded) Implementation
+│   ├──  vector_add_openmp.c       # C source code with OpenMP pragmas
+│   ├──  vector_add_openmp.exe     # Compiled OpenMP binary executable
+│   ├──  parallel_result.txt       # Raw terminal output (1M & 10M tests)
+│   └──  parallel_50M_result.txt   # Raw terminal output (50M test)
 │
-├── 📁 graphs/                       # High-Resolution Performance Visualizations
-│   ├── 📊 execution_time_comparison.png
-│   └── 📊 speedup_efficiency_analysis.png
+├──  graphs/                       # High-Resolution Performance Visualizations
+│   ├──  execution_time_comparison.png
+│   └──  speedup_efficiency_analysis.png
 │
-└── 📁 screenshoots/                 # Verified Terminal Execution Proofs
-    ├── 🖼️ Screenshot 2026-10-08 171652.png
-    ├── 🖼️ Screenshot 2026-10-08 171700.png
-    ├── 🖼️ Screenshot 2026-10-08 171709.png
-    ├── 🖼️ Screenshot 2026-10-08 171714.png
-    ├── 🖼️ Screenshot 2026-10-08 171719.png
-    ├── 🖼️ Screenshot 2026-10-08 171724.png
-    ├── 🖼️ Screenshot 2026-10-08 171728.png
-    ├── 🖼️ Screenshot 2026-10-08 171733.png
-    ├── 🖼️ Screenshot 2026-10-08 171738.png
-    ├── 🖼️ Screenshot 2026-10-08 171746.png
-    ├── 🖼️ Screenshot 2026-10-08 171750.png
-    ├── 🖼️ Screenshot 2026-10-08 171755.png
-    └── 🖼️ Screenshot 2026-10-08 171920.png
+└──  screenshoots/                 # Verified Terminal Execution Proofs
+    ├──  Screenshot 2026-10-08 171652.png
+    ├──  Screenshot 2026-10-08 171700.png
+    ├──  Screenshot 2026-10-08 171709.png
+    ├──  Screenshot 2026-10-08 171714.png
+    ├──  Screenshot 2026-10-08 171719.png
+    ├──  Screenshot 2026-10-08 171724.png
+    ├──  Screenshot 2026-10-08 171728.png
+    ├──  Screenshot 2026-10-08 171733.png
+    ├──  Screenshot 2026-10-08 171738.png
+    ├──  Screenshot 2026-10-08 171746.png
+    ├──  Screenshot 2026-10-08 171750.png
+    ├──  Screenshot 2026-10-08 171755.png
+    └──  Screenshot 2026-10-08 171920.png
 ```
 
 ---
 
-## 💻 Source Code Implementation
+##  Source Code Implementation
 
 ### 1. Sequential Source Code (`sequential/vector_add_sequential.c`)
 
@@ -327,7 +322,7 @@ int main(int argc, char *argv[])
 
 ---
 
-## 🛠️ Step-by-Step Execution Guide & Screenshots
+##  Step-by-Step Execution Guide & Screenshots
 
 All benchmarks were conducted on **MSYS2 UCRT64 / Windows Terminal** using GCC with OpenMP enabled (`-fopenmp`).
 
@@ -483,7 +478,7 @@ cat results.txt
 
 ---
 
-## 📊 Performance Benchmark & Results Table
+##  Performance Benchmark & Results Table
 
 ### 1. Vector Addition Benchmark ($C[i] = A[i] + B[i]$)
 
@@ -516,7 +511,7 @@ $$\text{Speedup } (S) = \frac{T_{\text{Sequential}}}{T_{\text{Parallel}}}, \quad
 
 ---
 
-## 📈 Performance Graphs & Visualizations
+##  Performance Graphs & Visualizations
 
 ### 1. Execution Time Comparison (Sequential vs OpenMP)
 ![Execution Time Comparison](graphs/execution_time_comparison.png)
@@ -526,7 +521,7 @@ $$\text{Speedup } (S) = \frac{T_{\text{Sequential}}}{T_{\text{Parallel}}}, \quad
 
 ---
 
-## 🔬 In-Depth Data Analysis
+##  In-Depth Data Analysis
 
 ### 1. Impact of Workload Granularity
 - **Small Datasets (1M Elements):** For $N = 10^6$, sequential addition takes only $5\text{ ms}$. Spawning a team of 12 OpenMP worker threads, assigning loop iterations, and synchronizing at the loop termination barrier introduces non-trivial OS and runtime overhead. Consequently, the speedup is limited to **1.67x (Addition)** and **1.20x (Multiplication)**.
